@@ -1,0 +1,45 @@
+
+	while (pView->m_bDisplayingRight)
+	{
+		int iZoom = 1;
+		int iOffsetX = 0;
+		int iOffsetY = 0;
+
+		char achBuf[128] = { 0 };
+		int buf1, buf2, gtsx[30], gtsy[30], gtex[30], gtey[30], gtcls[30];
+		int dtsx[30], dtsy[30], dtex[30], dtey[30], dtcls[30];
+		float buf3, buf4, buf5, buf6, buf7, buf8, buf9;
+
+		memset(gtsx, 0, sizeof(int) * 30);
+		memset(gtsy, 0, sizeof(int) * 30);
+		memset(gtex, 0, sizeof(int) * 30);
+		memset(gtey, 0, sizeof(int) * 30);
+		memset(gtcls, 0, sizeof(int) * 30);
+
+		memset(dtsx, 0, sizeof(int) * 30);
+		memset(dtsy, 0, sizeof(int) * 30);
+		memset(dtex, 0, sizeof(int) * 30);
+		memset(dtey, 0, sizeof(int) * 30);
+		memset(dtcls, 0, sizeof(int) * 30);
+
+		buf1 = buf2 = 0;
+		buf3 = buf4 = buf5 = buf6 = buf7 = buf8 = buf9 = 0.0f;
+
+		memset(pVPU1, 0, sizeof(AlgoOut_Post_Output_VPU1));
+
+		if (nPngCnt == 0)
+		{
+			for (int y = 0; y < 320; y++)
+			{
+				for (int x = 0; x < 512; x++)
+				{
+					*(pbyData + (y * 512 + x) * 3 + 0) = 0;
+					*(pbyData + (y * 512 + x) * 3 + 1) = 0;
+					*(pbyData + (y * 512 + x) * 3 + 2) = 255;
+				}
+			}
+
+			pView->m_wndODPreviewRight.m_cDisplay.SetVideoToSurface(0, pbyData, 512, 320, pView->m_nViewingChannel, 1, VF_RAW32);
+
+			pView->m_wndODPreviewRight.UpdateDisplay();
+		}
