@@ -1,0 +1,7 @@
+1)File Input(uyvy)
+2)send raw(yuv) data(to mpg) (using queue)
+3)uyvy play(thread)
+4)uyvy -> rgb
+5)frame count (insert & check)
+6)socket(TCP) gt/dt data receive(from mpg)
+7)draw gt/dt (check frame)(thread)
